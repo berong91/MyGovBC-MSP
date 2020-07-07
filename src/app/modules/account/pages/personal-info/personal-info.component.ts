@@ -80,7 +80,7 @@ export class AccountPersonalInfoComponent extends BaseForm implements OnInit, Af
   }
 
   get applicant(): MspPerson {
-    return this.dataService.accountApp.applicant;
+    return this.dataService.getMspAccountApp().applicant;
   }
 
   get spouse(): MspPerson {
