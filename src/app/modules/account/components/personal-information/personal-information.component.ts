@@ -11,6 +11,8 @@ export interface IPersonalInformation {
   lastName: string;
   dateOfBirth: Date;
   relationship: Relationship;
+  hasActiveMedicalServicePlan: boolean;
+  immigrationStatusChange: boolean;
 
   // Read only values (properties) must be set if you want the field to display with no values.
   readonly genderRequired?: boolean;
@@ -108,7 +110,8 @@ export class AccountPersonalInformationComponent<T extends IPersonalInformation>
   }
 
   get requiresPhn() {
-    return this.person.phnRequired;
+    // If added spouse or child checked "no" to "...have active Medical Services Plan Coverage?" then PHN not required
+    return this.person.hasActiveMedicalServicePlan !== false && this.person.immigrationStatusChange !== false;
   }
 
   get phn() {
@@ -118,6 +121,14 @@ export class AccountPersonalInformationComponent<T extends IPersonalInformation>
   set phn(phn: string) {
     this.person.phn = phn;
     this.personChange.emit(this.person);
+  }
+
+  get phnLabel() {
+    if (this.requiresPhn) {
+      return 'Personal Health Number (PHN)';
+    } else {
+      return 'Personal Health Number (PHN) (optional)';
+    }
   }
 
   get dateOfBirth() {
