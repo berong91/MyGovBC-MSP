@@ -1,52 +1,34 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
+import { PageStateService } from '../../../../services/page-state.service';
+import { EnrolDataService } from '../../services/enrol-data.service';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
 import { PersonalInfoComponent } from './personal-info.component';
-import { MspDataService } from '../../../../services/msp-data.service';
-import { LocalStorageModule } from 'angular-2-local-storage';
-import { TypeaheadModule } from 'ngx-bootstrap';
-import {ModalModule, AccordionModule} from 'ngx-bootstrap';
-import { CompletenessCheckService } from '../../../../services/completeness-check.service';
-import {MspCancelComponent} from '../../../../components/msp/common/cancel/cancel.component';
-import {MspImageErrorModalComponent} from '../../../msp-core/components/image-error-modal/image-error-modal.component';
-import { MspLogService } from '../../../../services/log.service';
-import {TextMaskModule} from 'angular2-text-mask';
-import {RouterTestingModule} from '@angular/router/testing';
-
-import { ProcessService } from '../../../../services/process.service';
-
 
 describe('PersonalInfoComponent', () => {
-
+  let component: PersonalInfoComponent;
+  let fixture: ComponentFixture<PersonalInfoComponent>;
   beforeEach(() => {
+    const routerStub = () => ({});
+    const pageStateServiceStub = () => ({setPageIncomplete: () => {}});
+    const enrolDataServiceStub = () => ({application: { applicant: { documents: [] } }});
     TestBed.configureTestingModule({
-      declarations: [
-        PersonalInfoComponent,
-        MspCancelComponent,
-        MspImageErrorModalComponent,        ],
-      imports: [TextMaskModule,
-        FormsModule,
-        TypeaheadModule,
-        ModalModule.forRoot(),
-        AccordionModule.forRoot(),
-        HttpClientModule,
-        RouterTestingModule,
-        LocalStorageModule.withConfig({
-          prefix: 'ca.bc.gov.msp',
-          storageType: 'sessionStorage'
-        })
-      ],
+      imports: [FormsModule],
+      schemas: [NO_ERRORS_SCHEMA],
+      declarations: [PersonalInfoComponent],
       providers: [
-        MspDataService,
-        MspLogService,
-        ProcessService,
-        CompletenessCheckService,
+        { provide: Router, useFactory: routerStub },
+        { provide: PageStateService, useFactory: pageStateServiceStub },
+        { provide: EnrolDataService, useFactory: enrolDataServiceStub }
       ]
     });
+    fixture = TestBed.createComponent(PersonalInfoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
-  it ('should work', () => {
-    const fixture = TestBed.createComponent(PersonalInfoComponent);
-    expect(fixture.componentInstance instanceof PersonalInfoComponent).toBe(true, 'should create PersonalInfoComponent');
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });
