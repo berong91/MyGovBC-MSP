@@ -7,6 +7,7 @@ import { MspDataService } from 'app/services/msp-data.service';
 import { Address } from 'moh-common-lib';
 import { ActivatedRoute } from '@angular/router';
 import { AssistStateService } from '../../services/assist-state.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'msp-assist-contact',
@@ -22,8 +23,7 @@ import { AssistStateService } from '../../services/assist-state.service';
         <common-address
           [(address)]="address"
           isRequired="true"
-          allowExtralines="true"
-          disableGeocoder="true"
+          [addressServiceUrl]="addressServiceUrl"
         ></common-address>
       </common-page-section>
       <h2 class="border-bottom">{{ phoneTitle }}</h2>
@@ -50,6 +50,7 @@ export class AssistContactComponent extends BaseComponent implements OnInit {
 
   addressLine2 = false;
   addressLine3 = false;
+  readonly addressServiceUrl: string = environment.appConstants.addressApiBaseUrl;
 
   addressLines = 0;
 
