@@ -219,8 +219,8 @@ export class MspAccountMaintenanceDataService {
 
     dto.departureDateDuring12MonthsDate =  input.departureDateDuring12MonthsDate;
     dto.departureDateDuring6MonthsDate = input.departureDateDuring6MonthsDate;
-    dto.returnDate12MonthsDate = input.returnDate12MonthsDate ;
-    dto.returnDate6MonthsDate = input.returnDate6MonthsDate ;
+    dto.returnDateDuring12MonthsDate = input.returnDateDuring12MonthsDate ;
+    dto.returnDateDuring6MonthsDate = input.returnDateDuring6MonthsDate ;
 
     dto.immigrationStatusChange = input.immigrationStatusChange;
    // dto.spouseRemoved = input.spouseRemoved;
@@ -258,7 +258,7 @@ export class MspAccountMaintenanceDataService {
     output.firstName = dto.firstName;
     output.middleName = dto.middleName;
     output.lastName = dto.lastName;
-    output.dob = dto.dob;
+    output.dob = dto.dob ? new Date(dto.dob) : undefined;
     output.middleName = dto.middleName;
     output.healthNumberFromOtherProvince = dto.healthNumberFromOtherProvince;
     output.previous_phn = dto.previous_phn;
@@ -275,32 +275,32 @@ export class MspAccountMaintenanceDataService {
     output.updatingPersonalInfo = dto.updatingPersonalInfo;
     output.departureDestination = dto.departureDestination;
 
-    output.cancellationDate = dto.cancellationDate;
+    output.cancellationDate = dto.cancellationDate ? new Date(dto.cancellationDate) : undefined;
     output.cancellationReason = dto.cancellationReason;
     output.hasCurrentMailingAddress = dto.hasCurrentMailingAddress;
     output.removedSpouseDueToDivorceDoc = dto.removedSpouseDueToDivorceDoc;
 
     output.isRemovedAtTheEndOfCurrentMonth = dto.isRemovedAtTheEndOfCurrentMonth;
 
-    output.marriageDate  = dto.marriageDate;
+    output.marriageDate = dto.cancellationDate ? new Date(dto.marriageDate): undefined;
 
     output.hasActiveMedicalServicePlan = dto.hasActiveMedicalServicePlan;
 
-    output.arrivalToCanadaDate = dto.arrivalToCanadaDate;
-    output.arrivalToBCDate = dto.arrivalToBCDate;
+    output.arrivalToCanadaDate = dto.arrivalToCanadaDate ? new Date(dto.arrivalToCanadaDate) : undefined;
+    output.arrivalToBCDate = dto.arrivalToBCDate ? new Date(dto.arrivalToBCDate) : undefined;
 
     output.movedFromProvinceOrCountry = dto.movedFromProvinceOrCountry;
     output.hasBeenReleasedFromArmedForces = dto.hasBeenReleasedFromArmedForces;
     output.institutionWorkHistory = dto.institutionWorkHistory;
-    output.dischargeDate = dto.dischargeDate;
+    output.dischargeDate = dto.dischargeDate ? new Date(dto.dischargeDate) : undefined;
 
     output.fullTimeStudent = dto.fullTimeStudent;
     output.inBCafterStudies = dto.inBCafterStudies;
 
     output.schoolName = dto.schoolName;
-    output.studiesDepartureDate = dto.studiesDepartureDate;
-    output.studiesFinishedDate = dto.studiesFinishedDate;
-    output.studiesBeginDate = dto.studiesBeginDate;
+    output.studiesDepartureDate = dto.studiesDepartureDate ? new Date(dto.studiesDepartureDate) : undefined;
+    output.studiesBeginDate = dto.studiesBeginDate ? new Date(dto.studiesBeginDate) : undefined;
+    output.studiesFinishedDate = dto.studiesFinishedDate ? new Date(dto.studiesFinishedDate) : undefined;
 
     output.schoolOutsideOfBC = dto.schoolOutsideOfBC;
 
@@ -311,7 +311,7 @@ export class MspAccountMaintenanceDataService {
       dto.declarationForOutsideOver60Days;
 
     output.newlyAdopted = dto.newlyAdopted;
-    output.adoptedDate = dto.adoptedDate;
+    output.adoptedDate = dto.adoptedDate ? new Date(dto.adoptedDate) : undefined;
 
     output.reasonForCancellation = dto.reasonForCancellation;
     output.prevLastName = dto.prevLastName;
@@ -326,18 +326,14 @@ export class MspAccountMaintenanceDataService {
     output.departureReason = dto.departureReason;
     output.departureReason12Months = dto.departureReason12Months;
     output.departureDestination12Months = dto.departureDestination12Months;
-    output.departureDateDuring12MonthsDate =  dto.departureDateDuring12MonthsDate;
-    output.departureDateDuring6MonthsDate = dto.departureDateDuring6MonthsDate ;
-
-    output.returnDate12MonthsDate = dto.returnDate12MonthsDate ;
-
-    output.returnDate6MonthsDate = dto.returnDate6MonthsDate ;
+    output.departureDateDuring12MonthsDate = dto.departureDateDuring12MonthsDate ? new Date(dto.departureDateDuring12MonthsDate): undefined;
+    output.departureDateDuring6MonthsDate = dto.departureDateDuring6MonthsDate ? new Date(dto.departureDateDuring6MonthsDate) : undefined;
+    output.returnDateDuring12MonthsDate = dto.returnDateDuring12MonthsDate ? new Date(dto.returnDateDuring12MonthsDate) : undefined;
+    output.returnDateDuring6MonthsDate = dto.returnDateDuring6MonthsDate ? new Date(dto.returnDateDuring6MonthsDate) : undefined;
     output.nameOfInstitute = dto.nameOfInstitute;
 
 
-
-
-    output.cancellationDate = dto.cancellationDate;
+    output.cancellationDate = dto.cancellationDate ? new Date(dto.cancellationDate) : undefined;
     if (dto.gender) {
       output.gender = dto.gender;
     }
@@ -473,8 +469,8 @@ export class MspAccountMaintenanceDataService {
     const rec: OutofBCRecord = new OutofBCRecord();
     rec.reason = dto.reason;
     rec.location = dto.location;
-    rec.departureDate = dto.departureDate;
-    rec.returnDate = dto.returnDate;
+    rec.departureDate = dto.departureDate ? new Date(dto.departureDate) : undefined;
+    rec.returnDate = dto.returnDate ? new Date(dto.returnDate) : undefined;
     return rec;
   }
 
@@ -492,7 +488,7 @@ export class MspAccountMaintenanceDataService {
       dto.nameChangeDueToMarriage;
 
     output.authorizedByApplicant = dto.authorizedByApplicant;
-    output.authorizedByApplicantDate = dto.authorizedByApplicantDate;
+    output.authorizedByApplicantDate = dto.authorizedByApplicantDate ? new Date(dto.authorizedByApplicantDate) : undefined;
     output.authorizedBySpouse = dto.authorizedBySpouse;
 
     output.infoCollectionAgreement = dto.infoCollectionAgreement;
