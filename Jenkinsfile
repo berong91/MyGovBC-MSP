@@ -11,6 +11,12 @@ def NGINX_BUILD_CONFIG = 'nginx-runtime-deam'
 def BUILD_CONFIG = APP_NAME + '-build'
 def IMAGESTREAM_NAME = APP_NAME 
 
+def TEST_VAR
+if (env.PROJECT_NAME == 'msp-deam') {
+  TEST_VAR = 'My test variable'
+}
+echo "This is a test. Test variable value: " + TEST_VAR
+
 node {
 
   stage('build nginx') {
