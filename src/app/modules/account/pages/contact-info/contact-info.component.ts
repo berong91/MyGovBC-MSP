@@ -57,6 +57,7 @@ export class ContactInfoComponent extends BaseForm implements OnInit, AfterViewI
    ngOnInit(){
     this.initProcessMembers(ContactInfoComponent.ProcessStepNum, this._processService);
     this._processService.setStep(ContactInfoComponent.ProcessStepNum, false);
+    super.ngOnInit();
   }
 
    toggleCheckBox(){

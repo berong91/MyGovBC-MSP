@@ -64,6 +64,7 @@ export class ChildInfoComponent extends BaseForm implements OnInit, AfterViewIni
     }
     this.initProcessMembers(ChildInfoComponent.ProcessStepNum, this._processService);
     this._processService.setStep(ChildInfoComponent.ProcessStepNum, false);
+    super.ngOnInit();
   }
 
   ngOnDestroy() {

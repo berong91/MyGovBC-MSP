@@ -53,6 +53,7 @@ export class AccountSendingComponent extends BaseForm implements AfterContentIni
       // Send them back to the home screen and reload the app
       location.assign('/msp');
     }
+    super.ngOnInit();
   }
 
   /**

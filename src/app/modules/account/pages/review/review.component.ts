@@ -35,6 +35,7 @@ export class AccountReviewComponent extends BaseForm implements OnInit {
     this.pageStateService.setPageIncomplete(this.router.url);
     this.initProcessMembers(AccountReviewComponent.ProcessStepNum, this._processService);
     this._processService.setStep(AccountReviewComponent.ProcessStepNum, false);
+    super.ngOnInit();
   }
 
   get hasSpouse() {

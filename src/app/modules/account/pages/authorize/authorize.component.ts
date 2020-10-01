@@ -74,6 +74,7 @@ export class AuthorizeComponent extends BaseForm implements OnInit {
   ngOnInit() {
     this.initProcessMembers(AuthorizeComponent.ProcessStepNum, this._processService);
     this._processService.setStep(AuthorizeComponent.ProcessStepNum, false);
+    super.ngOnInit();
   }
 
   applicantAuthorizeOnChange(event: boolean) {

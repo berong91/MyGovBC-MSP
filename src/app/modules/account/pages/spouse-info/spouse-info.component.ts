@@ -52,6 +52,7 @@ export class SpouseInfoComponent extends BaseForm implements OnInit, AfterViewIn
     this.pageStateService.setPageIncomplete(this.router.url);
     this.initProcessMembers(SpouseInfoComponent.ProcessStepNum, this._processService);
     this._processService.setStep(SpouseInfoComponent.ProcessStepNum, false);
+    super.ngOnInit();
   }
 
   ngOnDestroy() {

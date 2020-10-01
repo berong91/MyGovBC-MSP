@@ -61,6 +61,7 @@ export class AccountPersonalInfoComponent extends BaseForm implements OnInit, Af
     this.initProcessMembers(AccountPersonalInfoComponent.ProcessStepNum, this._processService);
     this._processService.setStep(AccountPersonalInfoComponent.ProcessStepNum, false);
     //this.initProcessMembers( this._processService.getStepNumber(ProcessUrls.ACCOUNT_PERSONAL_INFO_URL), this._processService);
+    super.ngOnInit();
   }
 
   ngOnDestroy() {
