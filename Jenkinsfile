@@ -15,7 +15,7 @@ def TEST_VAR
 if (env.PROJECT_NAME == 'msp-deam') {
   TEST_VAR = 'My test variable'
 }
-echo "This is a test. Test variable value: " + TEST_VAR
+echo "This is a test. Environment variable value: " + env.PROJECT_NAME
 
 node {
 
